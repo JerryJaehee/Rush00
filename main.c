@@ -27,4 +27,5 @@ int	main(void)
 	rush(1, 5);
 	ft_putchar('\n');
 	rush(4, 4);
+	return (0);
 }
