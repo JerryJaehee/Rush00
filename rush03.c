@@ -12,56 +12,53 @@
 
 void	ft_putchar(char c);
 
-void	is_a(int a, int b, int x, int y)
+int	g_input_x;
+int	g_input_y;
+int	g_current_x;
+int	g_current_y;
+
+void	write_a(void)
 {
 	char	c;
 
 	c = 'A';
-	if (x == 1)
+	if (g_current_x == 1)
 	{
-		if (y == 1 || y == b)
+		if (g_current_y == 1 || g_current_y == g_input_y)
 		{
 			ft_putchar(c);
 		}
 	}
 }
 
-void	is_b(int a, int b, int x, int y)
+void	write_b(void)
 {
 	char	c;
 
 	c = 'B';
-	if (x == 1 || y == 1 || x == a || y == b)
+	if (g_current_x == 1 || g_current_y == 1
+		|| g_current_x == g_input_x || g_current_y == g_input_y)
 	{
-		if (!(x == 1 && y == 1) && !(x == a && y == b)
-			&& ! (x == a && y == 1) && !(x == 1 && y == b))
+		if (!(g_current_x == 1 && g_current_y == 1)
+			&& !(g_current_x == g_input_x && g_current_y == g_input_y)
+			&& ! (g_current_x == g_input_x && g_current_y == 1)
+			&& !(g_current_x == 1 && g_current_y == g_input_y))
 		{
 			ft_putchar(c);
 		}
 	}
 }
 
-void	is_blank(int a, int b, int x, int y)
-{
-	char	c;
-
-	c = ' ';
-	if (x != 1 && y != 1 && x != a && y != b)
-	{
-		ft_putchar(c);
-	}
-}
-
-void	is_c(int a, int b, int x, int y)
+void	write_c(void)
 {
 	char	c;
 
 	c = 'C';
-	if (a != 1)
+	if (g_input_x != 1)
 	{
-		if (x == a)
+		if (g_current_x == g_input_x)
 		{
-			if (y == 1 || y == b)
+			if (g_current_y == 1 || g_current_y == g_input_y)
 			{
 				ft_putchar(c);
 			}
@@ -69,28 +66,41 @@ void	is_c(int a, int b, int x, int y)
 	}
 }
 
+void	write_blank(void)
+{
+	char	c;
+
+	c = ' ';
+	if (g_current_x != 1 && g_current_y != 1
+		&& g_current_x != g_input_x && g_current_y != g_input_y)
+	{
+		ft_putchar(c);
+	}
+}
+
 void	rush(int input_x, int input_y)
 {
 	 int	i;
-	 int	x;
-	 int	y;
 	char	c;
 
-	i = input_x * input_y;
-	x = 1;
-	y = 1;
+	g_input_x = input_x;
+	g_input_y = input_y;
+	i = g_input_x * g_input_y;
+	g_current_x = 1;
+	g_current_y = 1;
+	c = '\n';
 	while (i)
 	{
-		is_blank(input_x, input_y, x, y);
-		is_a(input_x, input_y, x, y);
-		is_b(input_x, input_y, x, y);
-		is_c(input_x, input_y, x, y);
-		x++;
-		if (x > input_x)
+		write_a();
+		write_b();
+		write_c();
+		write_blank();
+		g_current_x++;
+		if (g_current_x > g_input_x)
 		{
 			ft_putchar(c);
-			y++;
-			x = 1;
+			g_current_y++;
+			g_current_x = 1;
 		}
 		i--;
 	}
