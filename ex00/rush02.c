@@ -6,7 +6,7 @@
 /*   By: jaewokim <jaewokim@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 08:34:09 by jaewokim          #+#    #+#             */
-/*   Updated: 2021/09/11 08:34:12 by jaewokim         ###   ########.fr       */
+/*   Updated: 2021/09/12 18:16:19 by jaehelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	rush(x, y)
 	int	row;
 	int	column;
 
+	if (!(x > 0 && y > 0))
+		return ;
 	row = 0;
 	while (row < y)
 	{

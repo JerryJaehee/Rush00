@@ -6,7 +6,7 @@
 /*   By: jaewokim <jaewokim@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 08:22:58 by jaewokim          #+#    #+#             */
-/*   Updated: 2021/09/11 08:23:00 by jaewokim         ###   ########.fr       */
+/*   Updated: 2021/09/12 18:23:32 by jaehelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	rush(int input_x, int input_y)
 {
 	int	i;
 
+	if (!(input_x > 0 && input_y > 0))
+		return ;
 	g_input_x = input_x;
 	g_input_y = input_y;
 	i = g_input_x * g_input_y;
